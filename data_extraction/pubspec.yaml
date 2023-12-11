@@ -1,0 +1,8 @@
+name: tempo_guide_creator
+
+environment:
+  sdk: '^3.0.0'
+
+dependencies:
+  quran: ^1.2.2
+  sqlite_async: ^0.5.2

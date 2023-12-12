@@ -81,5 +81,5 @@ func (e *embedding) GetEmbeddings(text string) ([]float64, error) {
         return respEmbedding.Data[0].Embedding, nil
     }
 
-    return nil, fmt.Errorf("no embeddings returned")
+    return nil, fmt.Errorf("no embeddings returned");
 }

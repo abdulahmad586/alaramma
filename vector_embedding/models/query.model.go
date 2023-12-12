@@ -5,10 +5,8 @@ import (
     "log"
 )
 
-// sqlQueries is the exported variable containing the SQL query statements.
 var SqlQueries sqlQueriesStruct
 
-// sqlQueriesStruct is the internal structure that holds the SQL queries and manipulations.
 type sqlQueriesStruct struct {
     queries       queryStatements    `json:"queries"`
     manipulations manipulationStatements `json:"manipulations"`

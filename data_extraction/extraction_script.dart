@@ -8,6 +8,15 @@ List<String> tableCreation = [
   'CREATE TABLE tafseer (id INTEGER PRIMARY KEY AUTOINCREMENT, scholarName TEXT, language TEXT, content TEXT, verseNumber INTEGER, chapterNumber INTEGER)',
   'CREATE TABLE audioVerses (id INTEGER PRIMARY KEY AUTOINCREMENT, reciterName, audioUrl, verseNumber, chapterNumber)'
 ];
+// user these table pls
+// [
+//     'CREATE TABLE chapters (id INTEGER PRIMARY KEY AUTOINCREMENT, chapterNumber INTEGER, totalVerses INTEGER, englishName TEXT, arabicName TEXT, pageStart INTEGER, pageEnd INTEGER, totalPages INTEGER, revelationPlace TEXT)',
+//     'CREATE TABLE verses (id INTEGER PRIMARY KEY AUTOINCREMENT, verseNumber INTEGER, chapterNumber INTEGER, juzNumber INTEGER, pageNumber INTEGER, arabicText TEXT, englishText TEXT, keywords TEXT, keywordsEmbedding BLOB, FOREIGN KEY (chapterNumber) REFERENCES chapters(chapterNumber))',
+//     'CREATE TABLE translations (id INTEGER PRIMARY KEY AUTOINCREMENT, translatorName TEXT, language TEXT, content TEXT, contentEmbedding BLOB, verseNumber INTEGER, chapterNumber INTEGER, FOREIGN KEY (verseNumber, chapterNumber) REFERENCES verses(verseNumber, chapterNumber))',
+//     'CREATE TABLE tafseer (id INTEGER PRIMARY KEY AUTOINCREMENT, scholarName TEXT, language TEXT, content TEXT, contentEmbedding BLOB, verseNumber INTEGER, chapterNumber INTEGER, FOREIGN KEY (verseNumber, chapterNumber) REFERENCES verses(verseNumber, chapterNumber))',
+//     'CREATE TABLE audioVerses (id INTEGER PRIMARY KEY AUTOINCREMENT, reciterName TEXT, audioUrl TEXT, verseNumber INTEGER, chapterNumber INTEGER, FOREIGN KEY (verseNumber, chapterNumber) REFERENCES verses(verseNumber, chapterNumber))'
+// ]
+
 
 void main(List<String> args) async {
   SqliteMigration createTableMigrations = SqliteMigration(1, (tx) async {

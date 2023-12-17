@@ -27,12 +27,15 @@ type queryStatements struct {
 }
 
 type manipulationStatements struct {
-    insertNewChapter      string `json:"insertNewChapter"`
-    updateChapterDetails  string `json:"updateChapterDetails"`
-    deleteChapter         string `json:"deleteChapter"`
-    insertNewVerse        string `json:"insertNewVerse"`
-    updateVerseDetails    string `json:"updateVerseDetails"`
-    deleteVerse           string `json:"deleteVerse"`
+  insertNewChapter            string `json:"insertNewChapter"`
+  updateChapterDetails        string `json:"updateChapterDetails"`
+  deleteChapter               string `json:"deleteChapter"`
+  insertNewVerse              string `json:"insertNewVerse"`
+  updateVerseDetails          string `json:"updateVerseDetails"`
+  updateVerseEmbedding        string `json:"updateVerseEmbedding"`
+  deleteVerse                 string `json:"deleteVerse"`
+  updateTranslationEmbedding  string `json:"updateTranslationEmbedding"`
+  updateTafseerEmbedding      string `json:"updateTafseerEmbedding"`
 }
 
 func init() {
@@ -57,6 +60,9 @@ func init() {
 		  "insertNewVerse": "INSERT INTO verses (verseNumber, chapterNumber, juzNumber, pageNumber, arabicText, englishText, keywords) VALUES (?, ?, ?, ?, ?, ?, ?);",
 		  "updateVerseDetails": "UPDATE verses SET juzNumber = ?, pageNumber = ?, arabicText = ?, englishText = ?, keywords = ? WHERE verseNumber = ? AND chapterNumber = ?;",
 		  "deleteVerse": "DELETE FROM verses WHERE verseNumber = ? AND chapterNumber = ?;"
+      "updateVerseEmbedding": "UPDATE verses SET keywordsEmbedding = ? WHERE verseNumber = ? AND chapterNumber = ?;",
+      "updateTranslationEmbedding": "UPDATE translations SET contentEmbedding = ? WHERE verseNumber = ? AND chapterNumber = ? AND language = ?;",
+      "updateTafseerEmbedding": "UPDATE tafseer SET contentEmbedding = ? WHERE verseNumber = ? AND chapterNumber = ? AND scholarName = ?;"
 		}
 	  }
 	  `

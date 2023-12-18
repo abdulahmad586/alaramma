@@ -51,7 +51,7 @@ func updateAllContentEmbeddings(client *mongo.Client) error {
     ctx := context.TODO()
     collection := client.Database("qurandb").Collection("translations")
 
-    cursor, err := collection.Find(ctx, bson.M{})
+    cursor, err := collection.Find(ctx, bson.M{"contentEmbedding": bson.M{"$exists": false}})
     if err != nil {
         return err
     }

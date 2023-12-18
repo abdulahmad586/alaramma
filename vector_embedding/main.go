@@ -13,6 +13,14 @@ import (
 func main() {
 	db.InitDB("./quran.db")
 	defer db.CloseDB()
+	// emb := embeddings.NewEmbedding(os.Getenv("OPENAI_SECRET"), "text-embedding-ada-002")
+	// embeddings, err := emb.GetEmbeddings("hello worls")
+	// if err != nil {
+	// 	log.Printf("Error generating embeddings %s",  err)
+
+	// }
+	// fmt.Println(embeddings)
+
 
 	translations, err := FetchAllTranslations()
 	if err != nil {
@@ -49,6 +57,7 @@ func FetchAllTranslations() ([]Translation, error) {
 		}
 		translations = append(translations, t)
 	}
+	fmt.Println("lenthy",len(translations))
 	return translations, nil
 }
 func GenerateEmbeddingsForTranslations(translations []Translation) error {

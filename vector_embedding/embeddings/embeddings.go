@@ -17,7 +17,7 @@ type embedding struct {
 // requestBody struct to format the JSON request body
 type requestBody struct {
     Model   string   `json:"model"`
-    Inputs  []string `json:"inputs"`
+    Input  string `json:"input"`
 }
 
 // embeddingResponse struct to parse the JSON response
@@ -47,9 +47,8 @@ func (e *embedding) GetEmbeddings(text string) ([]float64, error) {
 
     reqBody := requestBody{
         Model:  e.model, // use the model specified in the embedding instance
-        Inputs: []string{text},
+        Input: text,
     }
-
     jsonReq, err := json.Marshal(reqBody)
     if err != nil {
         return nil, err
@@ -71,7 +70,7 @@ func (e *embedding) GetEmbeddings(text string) ([]float64, error) {
     defer resp.Body.Close()
 
     body, _ := ioutil.ReadAll(resp.Body)
-
+    fmt.Println("open res>>>>",string(body))
     var respEmbedding embeddingResponse
     if err := json.Unmarshal(body, &respEmbedding); err != nil {
         return nil, err

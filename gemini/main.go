@@ -51,7 +51,7 @@ func updateAllContentEmbeddings(client *mongo.Client) error {
     ctx := context.TODO()
     collection := client.Database("qurandb").Collection("translations")
 
-    cursor, err := collection.Find(ctx, bson.M{"contentEmbedding": bson.M{"$exists": false}})
+    cursor, err := collection.Find(ctx, bson.M{"contentEmbedding": []float32{}})
     if err != nil {
         return err
     }
@@ -122,5 +122,5 @@ func main() {
         log.Fatal(err)
     }
 
-    fmt.Println("All content embeddings updated successfully")
+    fmt.Println("All content embeddings updated successfully >>>")
 }
